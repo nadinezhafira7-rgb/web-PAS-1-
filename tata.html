@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #FFF7FA;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #FFF7FA;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4B2433;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color:#8A5A69;
+    }
+
+    .btn-donasi {
+      background-color: #F2B6C7;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color:  #F8C9D8;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #2E0606;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color:  #F4E6D0;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #2E0606;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #FFF7FA;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #F2B6C7;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #2E0606;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #2E0606;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo2.png" alt="HAIADIN" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">HAIADIN</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan Sholat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">Sifat Sholat Nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">Tata Cara Sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 Doa Iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir Setelah Sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>Tata Cara Sholat Sesuai Sunnah</h1>
+   <center><img src="tata.png" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+        Sifat Sholat Nabi adalah tata cara sholat yang dilakukan oleh Rasulullah ﷺ sebagaimana yang beliau ajarkan kepada para sahabat. Tujuannya agar umat Islam dapat melaksanakan sholat sesuai dengan tuntunan dan sunnah Rasulullah.
+<p class="penjelasan-justify">
+Sebagian dari Cara Shalat Nabi shallallahu ‘alaihi wa sallam Diterangkan oleh ‘Aisyah
+Hadits #274
+<p class="penjelasan-justify">
+وَعَنْ عَائِشَةَ رَضِيَ اللهُ عَنْهَا قَالَتْ: كَانَ رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ يَسْتَفْتِحُ الصَّلاَةَ بِالتَّكْبِيرِ، وَالْقِرَاءَةَ: بـِ{{الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ *}} وَكَانَ إذَا رَكَعَ لَمْ يُشْخِصْ رَأْسَهُ، وَلَمْ يُصَوِّبْهُ، وَلكِنْ بَيْنَ ذلِكَ. وَكَانَ إذَا رَفَعَ مِنَ الرُّكُوعِ لَمْ يَسْجُدْ حَتَّى يَسْتَوِيَ قَائِماً. وَإذَا رَفَعَ مِنَ السُّجودِ لَمْ يَسْجُدْ حَتَّى يَسْتَويَ جَالِساً.
+
+وَكَانَ يَقُولُ فِي كُلِّ رَكْعَتَيْنِ التَّحِيَّةَ. وَكَانَ يَفْرِشُ رِجْلَهُ الْيُسْرَى وَيَنْصِبُ الْيُمْنَى. وَكَانَ يَنْهى عَنْ عُقْبَةِ الشَّيْطانِ، وَيَنْهى أَنْ يَفْتَرِشَ الرَّجُلُ ذِرَاعَيْهِ افْتِرَاشَ السَّبُعِ. وَكَانَ يَخْتِمُ الصَّلاَةَ بِالتسْلِيمِ. أَخْرَجَهُ مُسْلِمٌ، وَلَهُ عِلَّةٌ.
+<p class="penjelasan-justify">
+Dari ‘Aisyah radhiyallahu ‘anha, ia berkata, “Rasulullah shallallahu ‘alaihi wa sallam biasanya membuka shalat dengan takbir dan memulai bacaan dengan ‘ALHAMDULILLAHI ROBBIL ‘AALAMIIN”. Apabila beliau rukuk, beliau tidak mengangkat kepalanya dan tidak pula menundukkannya, tetapi pertengahan antara keduanya. Apabila beliau bangkit dari rukuk, beliau tidak akan bersujud sampai beliau berdiri tegak. Apabila beliau mengangkat kepala dari sujud, beliau tidak akan bersujud lagi sampai beliau duduk tegak. Pada setiap dua rakaat, beliau selalu membaca tahiyat. Ketika itu kaki kiri diletakkan di lantai dan menegakkan kakinya yang kanan. Beliau melarang duduk ‘uqbah asy-syaithon. Beliau melarang lengan tangan diletakkan di tanah seperti duduknya binatang buas. Beliau mengakhiri shalat dengan salam.” (HR. Muslim dan hadits ini memiliki ‘illah, yaitu cacat). [HR. Muslim, no. 498. Hadits ini secara zhahir sahih, tetapi ada ‘illah, cacat. Karena Abul Jauza’, yang mana nama aslinya adalah Aus bin ‘Abdullah Ar-Raba’i tidak mendengar dari ‘Aisyah. Ibnu ‘Adi dan Ibnu ‘Abdil Barr menyebutkan seperti itu. Namun, ada kemungkinann Abul Jauza itu mendengar langsung karena masih semasa. Inilah yang dimaksudkan oleh Imam Muslim. Namun, sejatinya perawi tidak berjumpa dengan yang ia riwayatkan darinya atau tidak mendengarnya secara langsung. Oleh karena itu, hadits ini mursal. Wallahu a’lam].
+<p class="penjelasan-justify">
+ Keterangan hadits:
+<p class="penjelasan-justify">
+“كَانَ رَسُولُ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ يَسْتَفْتِحُ الصَّلاَةَ بِالتَّكْبِيرِ”, 
+<p class="penjelasan-justify">
+Rasulullah shallallahu ‘alaihi wa sallam biasanya membuka shalat dengan takbir. Kaana itu fiil madhi naaqish. Jika khabar kaana itu fiil mudhari’, itu menunjukkan istimror (terus menerus dilakukan), selama tidak ada hal yang menyatakan lain. Yang dimaksud membuka shalat dengan takbir di sini adalah takbiratul ihram.
+<p class="penjelasan-justify">
+“وَالْقِرَاءَةَ: بـِ{{الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ *}}”,
+<p class="penjelasan-justify">
+ dan memulai bacaan dengan ‘ALHAMDULILLAHI ROBBIL ‘AALAMIIN”, berarti beliau membaca surah Al-Fatihah.
+<p class="penjelasan-justify">
+“وَكَانَ إذَا رَكَعَ لَمْ يُشْخِصْ رَأْسَهُ، وَلَمْ يُصَوِّبْهُ”,
+<p class="penjelasan-justify">
+ apabila beliau rukuk, beliau tidak mengangkat kepalanya dan tidak pula menundukkannya, tetapi pertengahan antara keduanya, maksudnya ketika rukuk, kepala tidak terlalu diangkat, tidak terlalu diturunkan, tetapi kepala dalam keadaan lurus dengan punggung.
+<p class="penjelasan-justify">
+“وَكَانَ يَنْهى عَنْ عُقْبَةِ الشَّيْطانِ”, 
+<p class="penjelasan-justify">
+beliau melarang duduk ‘uqbah asy-syaithon (disebut pula: ‘aqiba asy-syaithon), maksudnya ada tiga bentuk:
+<p class="penjelasan-justify">
+telapak kaki diletakkan di lantai, di mana kedua punggung telapak kaki ke arah lantai, lalu duduk di atas tumit.
+kaki melekat pada pantat dengan tanah, lalu menegakkan betis dan pahanya, lalu telapak tangan di lantai.
+meletakkan pantat di atas tumit, seperti dilakukan saat duduk antara dua sujud, yang disebut duduk iq’a’. Duduk iq’a’ ini tidak terlarang.
+ <p class="penjelasan-justify">
+ Faedah hadits
+<p class="penjelasan-justify">
+Hadits ini jadi dalil wajibnya membuka shalat dengan takbir, yaitu takbiratul ihram dengan lafaz “ALLOHU AKBAR”. Sehingga membuka shalat itu dengan niat dan takbir.
+Hikmah membuka shalat dengan takbir adalah orang yang shalat menghadirkan hati bahwa ia sedang menghadap Allah Yang Mahabesar. Allah itu Mahabesar dari segala sesuatu yang terlintas dalam pikirannya. Menghadirkan seperti ini berarti seseorang itu khusyuk dan malu jika ia menyibukkan diri dengan selain Allah saat shalat.
+Membaca surah dalam shalat dimulai dengan surah Al-Fatihah. Seandainya ada bagian Al-Qur’an yang lain yang dibaca sebelum surah Al-Fatihah tidak dianggap.
+Antara takbiratul ihram dan bacaan surah tetap ada bacaan iftitah. Dalam catatan kaki Al-Yaqut An-Nafiis fii Madzhab Ibni Idris (hlm. 74, terbitan Dar Al-Minhaj) disebutkan bahwa membaca iftitah jadi gugur ketika sudah terlanjur membaca ta’awudz walaupun meninggalkan iftitah karena lupa. Iftitah juga jadi gugur jika makmum masbuk baru masuk ketika duduk bersama imam. Sedangkan, jika makmum masbuk masuknya ketika mengucapkan amin (aamiin) bersama imam, maka tetap dianjurkan membaca iftitah.
+Rukuk yang sesuai sunnah—sebagaimana diterangkan sebelumnya—adalah kepala rata dengan punggung, kepala tidak diangkat lebih dari rata punggung atau tunduk lebih rendah dari punggung.
+Ketika bangkit dari rukuk diperintahkan berdiri sejenak (thumakninah) dan ketika bangkit dari sujud lalu duduk antara dua sujud diperintahkan duduk sejenak (thumakninah). Hal ini telah dijelaskan pula dari sunnah Nabi shallallahu ‘alaihi wa sallam, dijelaskan dari lisan Nabi shallallahu ‘alaihi wa sallam dan praktik beliau.
+Membaca tahiyat disyariatkan di akhir setiap dua rakaat. Jika shalat hanya dua rakaat, diakhiri dengan tasyahhud lalu salam. Jika lebih dari dua rakaat, setelah tasyahud awal dilanjutkan mengerjakan rakaat selanjutnya, lalu tasyahhud kemudian salam.
+Ketika duduk antara dua sujud dan duduk tasyahhud awal, duduknya adalah iftirosy, yaitu meletakkan kaki kiri di lantai, menegakkan kaki kanan ketika duduk. Adapun tasyahhud akhir, duduknya adalah tawaruk yaitu mengeluarkan kaki kiri dan menegakkan kaki kanan dan duduk pada lantai. Inilah cara duduk yang disebutkan dalam madzhab Imam Syafii. Sedangkan dalam madzhab Imam Ahmad, duduk tawaruk barulah ada untuk duduk yang memiliki dua kali tasyahhud.
+Dilarang duduk ‘uqbah syaithan adalah duduk pada tumit sedangkan dua kaki dibentangkan di tanah. Ada juga tafsiran duduk ‘uqbah syaithan adalah kaki melekat pada pantat dengan tanah, lalu menegakkan betis dan pahanya, lalu telapak tangan di lantai. Yang jelas duduk ‘uqbah syaithan jenis pertama tidak bisa membuat seseorang duduk sejenak di lantai.
+Hadits ini juga menunjukkan larangan meletakkan lengan bawah di lantai saat sujud. Yang disunnahkan adalah mengangkat kedua lengan tersebut saat sujud. Yang diletakkan di lantai adalah dua telapak tangan. Sujud dengan meletakkan lengan di lantai menunjukkan shalat orang yang malas serta tasyabuh (meniru-niru) hewan buas dan anjing.
+<p class="penjelasan-justify">
+Dalam hadits Anas radhiyallahu ‘anhu, Rasulullah shallallahu ‘alaihi wa sallam bersabda,
+<p class="penjelasan-justify">
+اعْتَدِلُوا فِى السُّجُودِ ، وَلاَ يَبْسُطْ أَحَدُكُمْ ذِرَاعَيْهِ انْبِسَاطَ الْكَلْبِ
+<p class="penjelasan-justify">
+“Bersikaplah pertengahan ketika sujud. Janganlah salah seorang di antara kalian menempelkan lengannya di lantai seperti anjing yang meletakkan lengannya di lantai.” (HR. Bukhari, no. 822 dan Muslim, no. 493)
+<p class="penjelasan-justify">
+Keadaan Tangan Ketika Sujud
+<p class="penjelasan-justify">
+ Menutup shalat adalah dengan salam.
+ <p class="penjelasan-justify">
+Bacaan salam paling singkat adalah: ASSALAAMU ‘ALAIKUM.
+<p class="penjelasan-justify">
+Bacaan salam paling sempurna adalah: ASSALAMU ‘ALAIKUM WA ROHMATULLAH.
+<p class="penjelasan-justify">
+Dari Abu Sa’id Al-Khudri radhiyallahu ‘anhu, Rasulullah shallallahu ‘alaihi wa sallam bersabda,
+<p class="penjelasan-justify">
+مِفْتَاحُ الصَّلاَةِ الطُّهُورُ وَتَحْرِيمُهَا التَّكْبِيرُ وَتَحْلِيلُهَا التَّسْلِيمُ
+<p class="penjelasan-justify">
+“Pembuka shalat adalah bersuci, yang mengharamkan dari perkara di luar shalat adalah ucapan takbir dan yang menghalalkan kembali adalah ucapan salam.” (HR. Tirmidzi, no. 238 dan Ibnu Majah, no. 276. Abu ‘Isa mengatakan bahwa hadits ini hasan. Syaikh Al-Albani mengatakan bahwa hadits ini sahih).
+<p class="penjelasan-justify">
+Cara salam adalah dengan memalingkan wajah ke kanan sampai orang di belakang melihat pipi, begitu pula salam ke kiri sampai orang di belakang melihat pipi. Disebutkan dalam hadits,
+<p class="penjelasan-justify">
+عَنْ عَامِرِ بْنِ سَعْدٍ عَنْ أَبِيهِ قَالَ كُنْتُ أَرَى رَسُولَ اللَّهِ -صلى الله عليه وسلم- يُسَلِّمُ عَنْ يَمِينِهِ وَعَنْ يَسَارِهِ حَتَّى أَرَى بَيَاضَ خَدِّهِ
+<p class="penjelasan-justify">
+Dari ‘Amir bin Sa’ad dari bapaknya, ia berkata, “Aku pernah melihat Rasulullah shallallahu ‘alaihi wa sallam mengucapkan salam ke kanan dan ke kiri hingga aku melihat pipinya yang putih.” (HR. Muslim, no. 582).
+<p class="penjelasan-justify">
+Dari ‘Abdullah bin Mas’ud radhiyallahu ‘anhu, ia berkata,
+<p class="penjelasan-justify">
+أَنَّ النَّبِىَّ -صلى الله عليه وسلم- كَانَ يُسَلِّمُ عَنْ يَمِينِهِ وَعَنْ شِمَالِهِ حَتَّى يُرَى بَيَاضُ خَدِّهِ « السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ »
+<p class="penjelasan-justify">
+“Nabi shallallahu ‘alaihi wa sallam biasa mengucapkan salam ke kanan dan ke kiri sampai terlihat pipinya yang putih, lalu beliau mengucapkan, ‘ASSALAAMU ‘ALAIKUM WA ROHMATULLAH, ASSALAAMU ‘ALAIKUM WA ROHMATULLAH’ (artinya: Keselamatan dan rahmat Allah bagi kalian, keselamatan dan rahmat Allah bagi kalian).” (HR. Abu Daud, no. 996 dan Tirmidzi, no. 295. Al-Hafizh Abu Thahir mengatakan bahwa hadits ini sahih).
+    </p>
+  </main>
+
+</body>
+</html>

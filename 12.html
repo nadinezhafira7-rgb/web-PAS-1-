@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #FFF7FA;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #FFF7FA;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4B2433;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color:#8A5A69;
+    }
+
+    .btn-donasi {
+      background-color: #F2B6C7;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color:  #F8C9D8;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #2E0606;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color:  #F4E6D0;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #2E0606;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #FFF7FA;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #F2B6C7;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #2E0606;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #2E0606;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo2.png" alt="HAIADIN" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">HAIADIN</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan Sholat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">Sifat Sholat Nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">Tata Cara Sholat</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 Doa Iftitah</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir Setelah Sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>12 Doa Iftitah</h1>
+   <center><img src="12.png" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+     Kata Syaikh ‘Abdurrahman bin Nashir As-Sa’di rahimahullah dalam Manhajus Salikin,
+ <p class="penjelasan-justify">
+وَيَقُوْلُ : ” سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ ، وَتَبَارَكَ اسْمُكَ ، وَتَعَالَى جَدُّكَ ، وَلاَ إِلَهَ غَيْرُكَ ” ، أَوْ غَيْرُهُ مِنَ الاِسْتِفْتَاحَاتِ الوَارِدَةِ عَنِ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ.
+ <p class="penjelasan-justify">
+“Lalu menyebut (doa istiftah): SUBHAANAKALLOHUMMA WA BI HAMDIKA WA TABAAROKASMUKA WA TA’AALAAJADDUKA WA LAA ILAHA GHOIRUK (artinya: Maha suci Engkau ya Allah, aku memuji-Mu, Maha berkah Nama-Mu. Maha tinggi kekayaan dan kebesaran-Mu, tidak ada sesembahan yang berhak diibadahi dengan benar selain Engkau). Atau bisa pula membaca doa istiftah lainnya yang berasal dari Nabi shallallahu ‘alaihi wa sallam.”
+ <p class="penjelasan-justify">
+ 
+
+Berbagai Bentuk Doa Istiftah
+  <p class="penjelasan-justify">
+
+Doa Istiftah #01
+ <p class="penjelasan-justify">
+سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلاَ إِلَهَ غَيْرُكَ
+ <p class="penjelasan-justify">
+“SUBHAANAKALLOHUMMA WA BI HAMDIKA WA TABAAROKASMUKA WA TA’AALAAJADDUKA WA LAA ILAHA GHOIRUK
+ <p class="penjelasan-justify">
+(artinya: Maha suci Engkau ya Allah, aku memuji-Mu, Maha berkah Nama-Mu. Maha tinggi kekayaan dan kebesaran-Mu, tidak ada sesembahan yang berhak diibadahi dengan benar selain Engkau).” (HR. Muslim, no. 399; Abu Daud, no. 775;Tirmidzi, no. 242; Ibnu Majah, no. 804).
+ <p class="penjelasan-justify">
+Ibnu Taimiyah menyatakan, “Disunnahkan membaca doa istiftah tersebut dalam shalat wajib. Sedangkan doa istiftah yang lain dianjurkan oleh sebagian ulama untuk dibaca pada shalat nafilah (shalat sunnah).” (Kitab Shifat Ash-Shalah min SyarhAl-‘Umdahkarya Ibnu Taimiyah, hlm. 86).
+ <p class="penjelasan-justify">
+Ibnul Qayyim rahimahullah dalam Zaad Al-Ma’ad (1:194) berkata, “Ada riwayat shahih dari ‘Umar bahwa ia mencontohkan membaca doa istiftah seperti ini dan menganggap bahwa inilah kebiasaan dari Nabi shallallahu ‘alaihi wa sallam. ‘Umar menjaherkannya dan mengajarkannya kepada yang lainnya. Apa yang dilakukan ‘Umar di sini dapat dihukumi marfu’ (sampai pada Nabi shallallahu ‘alaihi wa sallam). Imam Ahmad sampai-sampai mengatakan, ‘Adapun saya, biasa memakai doa istiftah seperti yang dibaca oleh ‘Umar. Seandainya yang lainnya mengamalkan doa istiftah model lain, maka itu juga baik.”
+ <p class="penjelasan-justify">
+ 
+
+Doa Istiftah #02
+ <p class="penjelasan-justify">
+اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ اللَّهُمَّ نَقِّنِي مِنْ خَطَايَايَ كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنْ الدَّنَسِ اللَّهُمَّ اغْسِلْنِي مِنْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ
+ <p class="penjelasan-justify">
+“ALLOHUMMA BAA’ID BAYNII WA BAYNA KHOTHOYAAYA KAMAA BAA’ADTA BAYNAL MASYRIQI WAL MAGHRIB. ALLOHUMMA NAQQINII MIN KHOTHOYAAYA KAMAA YUNAQQOTS TSAUBUL ABYADHU MINAD DANAS. ALLOHUMMAGH-SILNII MIN KHOTHOYAAYA BIL MAA-I WATS TSALJI WAL BAROD
+ <p class="penjelasan-justify">
+(artinya: Ya Allah, jauhkanlah antara aku dan kesalahan-kesalahanku, sebagaimana Engkau menjauhkan antara timur dan barat. Ya Allah, bersihkanlah aku dari kesalahan-kesalahanku sebagaimana baju putih dibersihkan dari kotoran. Ya Allah, cucilah aku dari kesalahan-kesalahanku dengan air, salju dan embun).” (HR. Bukhari,no. 744;Muslim,no. 598;An-Nasa’i,no. 896;teks haditsnyaadalah dari An-Nasa’i).
+ <p class="penjelasan-justify">
+ 
+
+Doa Istiftah #03
+ <p class="penjelasan-justify">
+Biasa dibaca oleh Nabi shallallahu ‘alaihi wa sallam ketika shalat malam.
+ <p class="penjelasan-justify">
+اللَّهُمَّ رَبَّ جِبْرَائِيلَ وَمِيكَائِيلَ وَإِسْرَافِيلَ فَاطِرَ السَّمَوَاتِ وَالأَرْضِ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ أَنْتَ تَحْكُمُ بَيْنَ عِبَادِكَ فِيمَا كَانُوا فِيهِ يَخْتَلِفُونَ اِهْدِنِى لِمَا اخْتُلِفَ فِيهِ مِنَ الْحَقِّ بِإِذْنِكَ إِنَّكَ تَهْدِى مَنْ تَشَاءُ إِلَى صِرَاطٍ مُسْتَقِيمٍ
+ <p class="penjelasan-justify">
+“ALLOHUMMA ROBBA JIBROO-IILA WA MII-KA-IILA WA ISROOFIILA, FAATHIROS SAMAAWAATI WAL ARDHI ‘ALIIMAL GHOIBI WASY SYAHAADAH ANTA TAHKUMU BAYNA ‘IBAADIKA FIIMAA KAANUU FIIHI YAKHTALIFUUN, IHDINII LIMAKHTULIFA FIIHI MINAL HAQQI BI-IDZNIK, INNAKA TAHDI MAN TASYAA-U ILAA SHIROOTIM MUSTAQIIM
+ <p class="penjelasan-justify"> 
+(artinya: Ya Allah, Rabbnya Jibril, Mikail dan Israfil. Wahai Pencipta langit dan bumi. Wahai Rabb yang mengetahui yang ghaib dan nyata. Engkau yang menjatuhkan hukum untuk memutuskan apa yang mereka pertentangkan. Tunjukkanlah aku pada kebenaran apa yang dipertentangkan dengan seizin dari-Mu. Sesungguhnya Engkau menunjukkan pada jalan yang lurus bagi orang yang Engkau kehendaki).” (HR. Muslim, no. 770)
+ <p class="penjelasan-justify">
+ 
+
+Doa Istiftah #04
+ <p class="penjelasan-justify">
+اللَّهُ أَكْبَرُ كَبِيرًا اللَّهُ أَكْبَرُ كَبِيرًا اللَّهُ أَكْبَرُ كَبِيرًا وَالْحَمْدُ لِلَّهِ كَثِيرًا وَالْحَمْدُ لِلَّهِ كَثِيرًا وَالْحَمْدُ لِلَّهِ كَثِيرًا وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلاً وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلاً وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلاً أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ مِنْ نَفْخِهِ وَنَفْثِهِ وَهَمْزِهِ
+ <p class="penjelasan-justify">
+“ALLOHU AKBAR KABIIRO, ALLOHU AKBAR KABIIRO, ALLOHU AKBAR KABIIRO, WALHAMDULILLAHI KATSIIRO, WALHAMDULILLAHI KATSIIRO, WALHAMDULILLAHI KATSIIRO, WA SUBHANALLAHI BUKROTAW WASHIILAA, WA SUBHANALLAHI BUKROTAW WASHIILAA, WA SUBHANALLAHI BUKROTAW WASHIILA A’UDZU BILLAHI MINASY SYAITHOONI MIN NAFKHIHI, WA NAFTSHIHI, WA HAMZIH
+ <p class="penjelasan-justify">
+(artinya: Allah Maha Besar, Allah Maha Besar, Allah Maha Besar. Segala puji bagi Allah dengan pujian yang banyak, segala puji bagi Allah dengan pujian yang banyak, segala puji bagi Allah dengan pujian yang banyak. Maha Suci Allah di waktu pagi dan sore. Maha Suci Allah di waktu pagi dan sore. Maha Suci Allah di waktu pagi dan sore. Aku berlindung kepada Allah dari tiupan, bisikan, dan godaan setan).” (HR. Abu Daud, no. 764; Ibnu Majah, no. 807; Ahmad, 4:80,85. Syaikh Syu’aib Al-Arnauth dan ‘Abdul Qadir Al-Arnauth dalam tahqiq Zaad Al-Ma’ad, 1:197 mengatakan bahwa hadits ini dishahihkan oleh Ibnu Hibban, Al-Hakim dan disetujui oleh Imam Adz-Dzahabi).
+ <p class="penjelasan-justify">
+Sebagaimana kata penulis Ghayah Al-Muqtashidin (1:210), baiknya tidak menggabungkan di antara doa istiftah yang ada. Para ulama seperti Ibnu Taimiyyah, Syaikh As-Sa’di, Syaikh Ibnu Baz, dan Syaikh Ibnu Utsaimin menyatakan bahwa dianjurkan mengamalkan doa istiftah di atas secara bergantian, kadang baca yang satu, di kesempatan yang lainnya baca doa istiftah lainnya. Lihat Mulakhash Fiqh Al-‘Ibadat, hlm. 208.
+ <p class="penjelasan-justify">
+Ibnu Taimiyah rahimahullah berkata, “Jika ada yang lupa membaca doa istiftah pada tempatnya, maka ia tidak perlu mengganti di rakaat kedua.” (Kitab Shifat Ash-Shalah min SyarhAl-‘Umdah, hlm. 97)
+ <p class="penjelasan-justify">
+Semoga bermanfaat.
+    </p>
+
+    
+     
+  </main>
+
+</body>
+</html>
